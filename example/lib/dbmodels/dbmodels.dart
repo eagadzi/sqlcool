@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'models/car.dart';
+
 import 'db.dart';
+import 'models/car.dart';
 
 class _DbModelPageState extends State<DbModelPage> {
   var cars = <Car>[];
@@ -23,7 +24,7 @@ class _DbModelPageState extends State<DbModelPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Db models")),
+      appBar: AppBar(title: const Text('Db models')),
       body: ListView.builder(
         itemCount: cars.length,
         itemBuilder: (BuildContext context, int i) {
@@ -32,7 +33,7 @@ class _DbModelPageState extends State<DbModelPage> {
             title: Text("${car.name}"),
             subtitle: Text("Manufacturer: ${car.manufacturer.name}"),
             trailing: IconButton(
-              icon: Icon(Icons.delete),
+              icon: const Icon(Icons.delete),
               onPressed: () async {
                 await car.sqlDelete(verbose: true);
                 // refresh
